@@ -40,5 +40,54 @@ ObtenerRegistros();
 
 //Proceso para agregar registros
 const modal = document.getElementById("mdAgregar"); //Refiriendonos al Modal
-const btnAgregar = document.getElementById("btnAgregar"); //
-const btnCerrar = document.getElementById("btnCerrarModal");
+const btnAgregar = document.getElementById("btnAgregar"); //Refiriendonos al botón de agregar desde el index
+const btnCerrar = document.getElementById("btnCerrarModal"); //Botón para cerrar el modal
+
+//Creación de función flecha para el evento click
+btnAgregar.addEventListener("click", () => {
+    modal.showModal(); //Abre el modal cuando se le hace click al boton btnAgregar
+});
+
+//Creación de función flecha para el evento click
+btnCerrar.addEventListener("click", () => {
+    modal.close(); //Abre el modal cuando se le hace click al boton btnAgregar
+});
+
+//Agregar un nuevo integrante desde el formulario
+document.getElementById("frmAgregar").addEventListener("submit", async e => {
+    e.preventDefault(); //Evita que las cosas se envíen sin nada o por defecto
+
+    //Capturamos los valores del formulario
+    const Nombre = document.getElementById("txtNombre").value.trim();
+    const Apellido = document.getElementById("txtApellido").value.trim();
+    const Correo = document.getElementById("txtEmail").value.trim();
+    
+    //Validaciones de datos, primero validamos que los datos no se envíen vacíos
+    if (!Nombre || !Apellido || !Correo){
+        alert("Complete los campos antes de ser ingresados")
+        return; //Evitamos que el código se siga ejecutando
+    }
+
+    //Llamamos a la API para enviar los datos
+    //Creamos el objeto partiendo del API_URL, seguido del código
+    const respuesta = await fetch(API_URL, {
+        method: "POST", //Método que se quiere realizar, en este caso POST (Insert)
+        headers: {'Content-Type':'application/json'}, //Lo que se enviará a la API, un JSON
+        body: JSON.stringify({Nombre, Apellido, Correo}) //El JSON puro lo convertirá a String para ir a la API
+    });
+    //Validación extra, verificar si el registro fue enviado correctamente
+    if (respuesta.ok){
+        alert("El registro fue agregado correctamente");
+
+        //Limpiamos el formulario con los datos contenidos, sin tener la necesidad de recargar la página
+        document.getElementById("frmAgregar").reset();
+
+        //Cerramos el modal
+        modal.close();
+
+        //Recargamos la tabla EN VEZ de la página
+        ObtenerRegistros();
+    } else {
+        alert("No se registro nada chavalin, revisa el código");
+    }
+});
