@@ -1,0 +1,28 @@
+.add-button{
+    position: fixed; /* El botón queda "flotante" sobre el contenido */
+    bottom: 30px; /* Separación desde abajo de la pág web de abajo */
+    right: 40px; /* Separación desde la derecha de la pág web */
+    background-color: blueviolet;
+    color: white; /* Ya está en blanco, pero es mejor idea recalcarlo */
+    border-radius: 50%; /* Redondear el botón para que sea redondo */
+    border: none; /* Removemos los bordes que trae por defecto */
+    /* Dejamos que se vea aplastado el botón como si le hubiera pegado Jennifer */
+    width: 70px;
+    height: 70px;
+    /* Box shadow para el botón */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex; /* Activamos flexbox */
+    justify-content: center; /* Alineación horizontal */
+    align-items: center; /* Alineación vertical */
+    /* Aseguramos que el botón siempre quede encima sobre el resto del contenedor */
+    z-index: 100;
+    transition: transform 0.4s; /* Duración del efecto para el hover */
+}
+
+.add-button:hover{
+    transform: scale(1.1);
+}
+
+.tabla-scroll{
+    overflow-x: auto; /* Colocamos un scroll horizontal para ser más específicos */
+}

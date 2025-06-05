@@ -18,7 +18,6 @@
             <ul>
                 <li><a href="#">Integrantes</a></li>
                 <li><a href="#">Tareas</a></li>
-                <li><a href="#">Mi perfil</a></li>
                 <li><a href="#" role="button">Cerrar Sesión</a></li>
             </ul>
         </nav>
@@ -26,22 +25,31 @@
 
     <main class="container">
         <h2>Integrantes del Equipo Expo</h2>
-        <table id="tabla" class="overflow-auto striped">
-            <thead>
-                <tr> <!-- "TR" de Table Row - Filas -->
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Correo Electrónico</th>
-                    <th>Acciones</th> <!-- Botones para eliminar y editar -->
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Datos que ya estan en el archivo JS -->
-
-            </tbody>
-        </table>
+        <div class="tabla-scroll">
+            <table id="tabla" class="overflow-auto striped">
+                <thead>
+                    <tr> <!-- "TR" de Table Row - Filas -->
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo Electrónico</th>
+                        <th>Acciones</th> <!-- Botones para eliminar y editar -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Datos que ya estan en el archivo JS -->
+                </tbody>
+            </table>
+        </div>
     </main>
+
+    <!-- Creación de un boton para agregar usuarios -->
+    <button class="add-button" id="btnAgregar" title="Agregar Integrantes">
+        <!-- Botón agregado de agregar usuarios partiendo de la página Lucide -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+        
+
+    </button>
 
     <script src="js/script.js"></script>
 </body>
