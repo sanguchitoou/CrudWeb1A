@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Enlazamos el CSS de Picos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <!-- Enlazamos el CSS local -->
     <link rel="stylesheet" href="css/style.css">
     <title>Discord y Jennifer Tocino</title>
 </head>
@@ -42,6 +43,25 @@
             </table>
         </div>
     </main>
+
+    <!-- Popup para agregar registros -->
+     <!-- Permite abrir un popup -->
+    <dialog id="mdAgregar">
+        <article>
+            <header>
+                <a href="#" class="close" id="btnCerrarModal"></a>
+                <h3>Agregar Integrante</h3>
+            </header>
+            <!-- Creamos un formulario fuera del heador, quitamos el ACTION para evitar problemas -->
+            <form id="frmAgregar">
+                <input type="text" id="txtNombre" placeholder="Nombre" required>
+                <input type="text" id="txtApellido" placeholder="Apellido" required>
+                <input type="text" id="txtEmail" placeholder="Correo Electrónico" required>
+                <!-- Agregamos el botón de Agregar -->
+                <button type="submit" class="contrast">Guardar Registro</button>
+            </form>
+        </article>
+    </dialog>
 
     <!-- Creación de un boton para agregar usuarios -->
     <button class="add-button" id="btnAgregar" title="Agregar Integrantes">
