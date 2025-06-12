@@ -52,7 +52,7 @@
                 <a href="#" class="close" id="btnCerrarModal"></a>
                 <h3>Agregar Integrante</h3>
             </header>
-            <!-- Creamos un formulario fuera del heador, quitamos el ACTION para evitar problemas -->
+            <!-- Creamos un formulario fuera del header, quitamos el ACTION para evitar problemas -->
             <form id="frmAgregar">
                 <input type="text" id="txtNombre" placeholder="Nombre" required>
                 <input type="text" id="txtApellido" placeholder="Apellido" required>
@@ -63,12 +63,30 @@
         </article>
     </dialog>
 
+    <!-- Popup para actualizar registros -->
+     <!-- Permite abrir un popup -->
+    <dialog id="mdModificar">
+        <article>
+            <header>
+                <a href="#" class="close" id="btnCerrarModalEditar"></a>
+                <h3>Modificar Integrante</h3>
+            </header>
+            <!-- Creamos un formulario fuera del header, quitamos el ACTION para evitar problemas -->
+            <form id="frmModificar">
+                <input type="hidden" id="txtIdEditar">
+                <input type="text" id="txtNombreEditar" placeholder="Nombre" required>
+                <input type="text" id="txtApellidoEditar" placeholder="Apellido" required>
+                <input type="text" id="txtEmailEditar" placeholder="Correo Electrónico" required>
+                <!-- Agregamos el botón de Agregar -->
+                <button type="submit" class="contrast">Modificar Registro</button>
+            </form>
+        </article>
+    </dialog>
+
     <!-- Creación de un boton para agregar usuarios -->
     <button class="add-button" id="btnAgregar" title="Agregar Integrantes">
         <!-- Botón agregado de agregar usuarios partiendo de la página Lucide -->
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-        
-
     </button>
 
     <script src="js/script.js"></script>

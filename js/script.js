@@ -28,8 +28,8 @@ function MostrarRegistros(datos){
                 <td>${persona.Apellido}</td>
                 <td>${persona.Correo}</td>
                 <td>
-                <button>Editar</button>
-                <button onclick="EliminarPersona(${persona.id})">Eliminar</button>
+                <button onclick = "AbrirModalEditar('${persona.id}', '${persona.Nombre}', '${persona.Apellido}', '${persona.Correo}')">Editar</button>
+                <button onclick = "EliminarPersona(${persona.id})">Eliminar</button>
                 </td>
             </tr>
         `;
@@ -92,6 +92,7 @@ document.getElementById("frmAgregar").addEventListener("submit", async e => {
     }
 });
 
+
 //Función para borrar registros
 async function EliminarPersona(idPersona){
     const confirmacion = confirm("¿Desea realmente eliminar el registro de esa persona?");
@@ -105,6 +106,27 @@ async function EliminarPersona(idPersona){
         //Recargamos la tabla para actualizar la vista del grid
         ObtenerRegistros();
 
-
     }
+}
+
+/* --------------------- PARA EDITAR MJEE ------------------------ */
+const modalEditar = document.getElementById("mdModificar"); //Constante para editar el modal
+const btnCerrarEditar = document.getElementById("btnCerrarModalEditar"); //Botón para cerrar el modal
+
+/* ------------------ yo ------------------ */
+//Crear función para abrir el MODAL editar
+btnCerrarEditar.addEventListener("click", () => {
+    modalEditar.close(); //Abre el modal cuando se le hace click al boton btnAgregar
+});
+
+//Función para llamar a los valores a la hora de editar
+function AbrirModalEditar(id, nombreEditar, apellidoEditar, correoEditar){
+    //Agregamos los valores a los input
+    document.getElementById("txtIdEditar").value = id;
+    document.getElementById("txtNombreEditar").value = nombreEditar;
+    document.getElementById("txtApellidoEditar").value = apellidoEditar;
+    document.getElementById("txtEmailEditar").value = correoEditar;
+
+    //Luego de agregar los valores al MODAL, mostraremos al modal editar 
+    modalEditar.showModal();
 }
