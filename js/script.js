@@ -130,3 +130,43 @@ function AbrirModalEditar(id, nombreEditar, apellidoEditar, correoEditar){
     //Luego de agregar los valores al MODAL, mostraremos al modal editar 
     modalEditar.showModal();
 }
+
+//Agregar un nuevo integrante desde el formulario
+document.getElementById("frmModificar").addEventListener("submit", async e => {
+    e.preventDefault(); //Evita que las cosas se envíen sin nada o por defecto
+
+    //Capturamos los valores del formulario
+    const idPersona = document.getElementById("txtIdEditar").value;
+    const Nombre = document.getElementById("txtNombreEditar").value.trim();
+    const Apellido = document.getElementById("txtApellidoEditar").value.trim();
+    const Correo = document.getElementById("txtEmailEditar").value.trim();
+    
+    //Validaciones de datos, primero validamos que los datos no se envíen vacíos
+    if (!Nombre || !Apellido || !Correo){
+        alert("Complete los campos antes de ser ingresados")
+        return; //Evitamos que el código se siga ejecutando
+    }
+
+    //Llamamos a la API para enviar los datos
+    //Creamos el objeto partiendo del API_URL, seguido del código
+    const respuesta = await fetch(`${API_URL}/${idPersona}`, {
+        method: "PUT", //Método que se quiere realizar, en este caso POST (Insert)
+        headers: {'Content-Type':'application/json'}, //Lo que se enviará a la API, un JSON
+        body: JSON.stringify({Nombre, Apellido, Correo}) //El JSON puro lo convertirá a String para ir a la API
+    });
+    //Validación extra, verificar si el registro fue enviado correctamente
+    if (respuesta.ok){
+        alert("El registro fue actualizado correctamente");
+
+        //Limpiamos el formulario con los datos contenidos, sin tener la necesidad de recargar la página
+        document.getElementById("frmModificar").reset();
+
+        //Cerramos el modal
+        modalEditar.close();
+
+        //Recargamos la tabla EN VEZ de la página
+        ObtenerRegistros();
+    } else {
+        alert("No se actualizó nada chavalin, revisa el código");
+    }
+});
